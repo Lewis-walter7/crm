@@ -12,10 +12,10 @@ export class NextcloudStrategy extends PassportStrategy(Strategy, 'nextcloud') {
         private authService: AuthService,
     ) {
         super({
-            authorizationURL: `${configService.get<string>('NEXTCLOUD_URL') || ''}/apps/oauth2/authorize`,
-            tokenURL: `${configService.get<string>('NEXTCLOUD_URL') || ''}/apps/oauth2/api/v1/token`,
-            clientID: configService.get<string>('NEXTCLOUD_CLIENT_ID') || '',
-            clientSecret: configService.get<string>('NEXTCLOUD_CLIENT_SECRET') || '',
+            authorizationURL: `${configService.get<string>('NEXTCLOUD_URL') || 'http://localhost'}/apps/oauth2/authorize`,
+            tokenURL: `${configService.get<string>('NEXTCLOUD_URL') || 'http://localhost'}/apps/oauth2/api/v1/token`,
+            clientID: configService.get<string>('NEXTCLOUD_CLIENT_ID') || 'mock_client_id',
+            clientSecret: configService.get<string>('NEXTCLOUD_CLIENT_SECRET') || 'mock_client_secret',
             callbackURL: configService.get<string>('NEXTCLOUD_CALLBACK_URL') || 'http://localhost:3000/auth/nextcloud/callback',
             scope: 'openid',
         });
